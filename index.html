@@ -13,10 +13,90 @@
   </head>
 
   <body>
-    <h1>This is a h1</h1>
-    <h2>This is a h2</h2>
-    <p>This is a paragraph</p>
-    <button type="button">This is a button!</button>
+    <h1>Cynical Quotes!</h1>
+    <h2>Add your cynical quotes below!</h2>
+
+    <!-- Form to add the quotes. ---------------------------------------------->
+    <form class="form" action="#" method="post">
+      <p>Submit another quote.</p>
+      <div class="quoteAndQuoterCont">
+
+        <div class="quoterCont">
+          <label for="quoter">Quoter:</label>
+          <input type="text" id="quoter" name="quoter" autocomplete="off" autofocus>
+        </div>
+
+        <div class="quoteCont">
+          <label for="quote">Quote:</label>
+          <input type="text" id="quote" name="quote" autocomplete="off" autofocus>
+        </div>
+
+      </div>
+
+      <button type="button">Add your quote!</button>
+    </form>
+
+    <!-- The added quotes. ---------------------------------------------------->
+    <h2 class="quotesHeading">Your Cynical Quotes
+      <span><div class="dash">-</div><div class="arrow">-></div></span>
+    </h2>
+
+    <ul class="quotesUlCont">
+      <li>
+        <div class="quotesDiv">
+          <span class="italics">Life is a hospital is which every patient is possessed by the desire to change his bed.</span>
+          <span class="bold">Charles Baudelaire</span>
+        </div>
+        <div class="quoteButtons">
+          <button type="button" class="edit">Edit</button>
+          <button type="button" class="delete">Delete</button>
+        </div>
+      </li>
+
+      <li>
+        <div class="quotesDiv">
+          <span class="italics">Life is a hospital is which every patient is possessed by the desire to change his bed.</span>
+          <span class="bold">Charles Baudelaire</span>
+        </div>
+        <div class="quoteButtons">
+          <button type="button" class="edit">Edit</button>
+          <button type="button" class="delete">Delete</button>
+        </div>
+      </li>
+    </ul>
+
+    <!-- The cover for the edit and delete modals ----------------------------->
+    <div class="modelCover hide"></div>
+
+    <!-- The edit modal. ------------------------------------------------------>
+    <div class="editModal hide" id="editModalId">
+
+      <p>Please make the required adjustments.</p>
+      <div class="quoteAndQuoterCont">
+
+        <div class="quoterCont">
+          <label for="quoterEdit">Quoter:</label>
+          <input type="text" id="quoterEdit" autocomplete="off" autofocus>
+        </div>
+
+        <div class="quoteCont">
+          <label for="quoteEdit">Quote:</label>
+          <input type="text" id="quoteEdit"  autocomplete="off" autofocus>
+        </div>
+
+      </div>
+
+      <button type="button" id="editSubId">Click to Update!</button>
+    </div>
+
+    <!-- The edit modal. ------------------------------------------------------>
+    <div class="deleteModal hide" id="deleteModalId">
+
+      <p>Are you sure you wish to delete?</p>
+      <button type="button" id="noDeleteId" class="delCancel">Cancel!</button>
+      <button type="button" id="deleteId" class="delConfirm">Delete!</button>
+    </div>
+
 
   </body>
 </html>

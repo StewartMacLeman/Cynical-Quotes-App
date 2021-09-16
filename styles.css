@@ -1,3 +1,188 @@
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
-  background-color: pink;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  background-color: gold;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+p { font-size: 1.5rem; }
+li { font-size: 1.5rem; }
+span { font-size: 1.5rem; }
+label, input { font-size: 1.5rem; }
+button { font-size: 1.5rem; }
+
+h1, h2, p, li, span, label, input, button {
+  font-family: helvetica, sans-serif;
+  text-align: center;
+  margin: 0 auto .25rem;
+  padding: .15rem;
+  background-color: none;
+}
+/* Button styles. ------------------------------------------------------ */
+button {
+  color: white;
+  background-color: black;
+  border-radius: 8px;
+}
+button:hover {
+  color: black;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+/* Submission form styles. ---------------------------------------------- */
+.form {
+  width: 90%;
+  background-color: white;
+  border: .15rem solid black;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form button {
+  min-width: 40%;
+}
+.quoteAndQuoterCont{
+  width: 90%;
+}
+.quoterCont, .quoteCont {
+  display: grid;
+  grid-template-columns: 20% 78%;
+}
+.quoterCont label, .quoteCont label {
+width: 100%;
+text-align: right;
+}
+.quoterCont input, .quoteCont input {
+width: 100%;
+text-align: left;
+}
+/* Quotes heading -------------------------------------------------------- */
+.quotesHeading {
+  margin-bottom: 1.25rem;
+}
+.dash {
+  display: inline-block;
+  transform: scaleX(255%) translateX(21%);
+}
+.arrow {
+  display: inline-block;
+  transform: rotate(90deg) translate(50%);
+}
+/* Quotes section. -------------------------------------------------------- */
+.quotesUlCont {
+  width: 90%;
+  list-style-type: none;
+  padding: .25rem;
+}
+.quotesUlCont li {
+  border-bottom: .15rem solid black;
+}
+.italics {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.quotesDiv {
+  margin-bottom: 0.5rem;
+}
+.quotesDiv .italics:before, .quotesDiv .italics:after {
+  content: '"';
+}
+.quotesDiv .bold:before {
+  content: '- ';
+}
+.quoteButtons button {
+  min-width: 30%;
+}
+.edit {
+  background-color: dodgerblue;
+}
+.delete {
+  background-color: red;
+}
+/* The Modal Cover. -------------------------------------------------------- */
+.modelCover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: grey;
+  opacity: 50%;
+}
+/* The Edit & Delete Modals. ------------------------------------------------ */
+.editModal, .deleteModal {
+  width: 80vw;
+  height: 25vw;
+  border: .15rem solid black;
+  background-color: white;
+  padding: .5rem;
+  position: fixed;
+  top: 30%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.deleteModal button {
+  width: 50%;
+}
+.delCancel {
+  background-color: dodgerblue;
+}
+.delConfirm {
+  background-color: red;
+}
+/* Hide class. ---------------------------------------------------- */
+.hide {
+  display: none;
+}
+/* Media queries. ------------------------------------------------- */
+@media screen and (min-width: 1050px) {
+  body { width: 80%; }
+  .quotesUlCont {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 800px) {
+  html { font-size: 12px; }
+}
+@media screen and (max-width: 500px) {
+  html { font-size: 8px; }
+  button { border-radius: 6px; }
+}
+@media screen and (max-width: 400px) {
+  .form button {
+    min-width: 60%;
+  }
+  .quoterCont, .quoteCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .quoterCont label, .quoterCont input, .quoteCont label, .quoteCont input {
+  text-align: center;
+  }
+  .editModal, .deleteModal {
+    width: 80vw;
+    height: 60vw;
+  }
+  .editModal *{
+    margin: 0 auto;
+  }
 }
