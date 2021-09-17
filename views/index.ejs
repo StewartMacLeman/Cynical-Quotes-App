@@ -41,28 +41,21 @@
       <span><div class="dash">-</div><div class="arrow">-></div></span>
     </h2>
 
-    <ul class="quotesUlCont">
-      <li>
-        <div class="quotesDiv">
-          <span class="italics">Life is a hospital is which every patient is possessed by the desire to change his bed.</span>
-          <span class="bold">Charles Baudelaire</span>
-        </div>
-        <div class="quoteButtons">
-          <button type="button" class="edit">Edit</button>
-          <button type="button" class="delete">Delete</button>
-        </div>
-      </li>
 
+    <ul class="quotesUlCont">
+      <!-- Loop through the quotes. ---------------------------->
+        <% for(let i = 0; i < quotesArray.length; i++) { %>
       <li>
         <div class="quotesDiv">
-          <span class="italics">Life is a hospital is which every patient is possessed by the desire to change his bed.</span>
-          <span class="bold">Charles Baudelaire</span>
+          <span class="italics"><%= quotesArray[i].quote %></span>
+          <span class="bold"><%= quotesArray[i].quoter %></span>
         </div>
         <div class="quoteButtons">
           <button type="button" class="edit">Edit</button>
           <button type="button" class="delete">Delete</button>
         </div>
       </li>
+    <% } %>
     </ul>
 
     <!-- The cover for the edit and delete modals ----------------------------->

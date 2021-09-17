@@ -13,19 +13,22 @@ app.use(express.static("public"));
 let database;
 MongoClient.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
   database = client.db('cynical_quotes');
-});
-
-app.get('/', (req, res) => {
-  res.render("index.ejs");
 })
 
-
-// Create / post. ------------------------
-app.post("/add-quote", (req, res) => {
-  database.collection("quotes").insertOne({quoter: req.body.quoter, quote: req.body.quote}, () => {
-    res.redirect("/")
+// Read / get. ---------------------------
+  app.get('/', (req, res) => {
+    database.collection("quotes").find().toArray((err, dbQuotes) => {
+      res.render("index.ejs", { quotesArray: dbQuotes })
+    })
   })
-});
+
+  // Create / post. ------------------------
+  app.post("/add-quote", (req, res) => {
+    database.collection("quotes").insertOne({quoter: req.body.quoter, quote: req.body.quote}, () => {
+      res.redirect("/");
+    })
+  });
+
 
 
 
