@@ -20,14 +20,14 @@ let quoterElement;
 let quoteText;
 let quoteElement;
 let delete_id;
+let deleteElement;
 
-// The edit model. -----------------------------------------------------
+// The edit model. -------------------------------------------------------------
 for (let i=0; i < editButtons.length; i++){
   editButtons[i].addEventListener("click", displayEditModal)
 };
 
 function displayEditModal(e){
-
   edit_id = e.target.parentElement.querySelector(".hide").textContent;
   quoterText = e.target.parentElement.previousElementSibling.querySelector(".bold").textContent;
   quoterElement = e.target.parentElement.previousElementSibling.querySelector(".bold");
@@ -43,19 +43,15 @@ function displayEditModal(e){
     editModalDiv.classList.add("hide");
   }
 }
-// Submit the edited text. ----------------------------------------------
+// Submit the edited text. --------------------------------------------------
 innerEditButton.addEventListener("click", submitEdit);
 
 function submitEdit(e){
 
-  console.log(edit_id);
-  console.log(quoteText);
-  console.log(quoterText);
-
   let updatedQuoter = editModalQuoter.value;
   let updatedQuote = editModalQuote.value;
 
-  axios.post("/update-quotes", {id: edit_id, quoter: updatedQuoter, quote: updatedQuote} ).then(() => {
+  axios.post("/update-quote", {id: edit_id, quoter: updatedQuoter, quote: updatedQuote} ).then(() => {
     quoterElement.textContent = updatedQuoter;
     quoteElement.textContent = updatedQuote;
   }).catch(() => {
@@ -72,6 +68,9 @@ for (let i=0; i < deleteButtons.length; i++){
 };
 
 function displayDeleteModal(e){
+  delete_id = e.target.parentElement.querySelector(".hide").textContent;
+  deleteElement = e.target.parentElement.parentElement;
+
   if (deleteModalDiv.classList.contains("hide") == true){
     modalCoverDiv.classList.remove("hide");
     deleteModalDiv.classList.remove("hide");
@@ -90,8 +89,13 @@ function cancelDelete(){
 confirmDeleteButton.addEventListener("click", confirmDelete);
 
 function confirmDelete(){
-  // Temporary functions.
+
+  axios.post("/delete-quote", { id: delete_id }).then(() => {
+    deleteElement.remove();
+  }).catch(() => {
+    console.log("Please try again later!");
+  });
+
   modalCoverDiv.classList.add("hide");
   deleteModalDiv.classList.add("hide");
-  // fetch code to be added later.
 }

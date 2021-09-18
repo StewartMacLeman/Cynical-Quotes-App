@@ -20,14 +20,14 @@
       <p>Submit another quote.</p>
       <div class="quoteAndQuoterCont">
 
-        <div class="quoterCont">
-          <label for="quoter">Quoter:</label>
-          <input type="text" id="quoter" name="quoter" autocomplete="off" autofocus>
-        </div>
-
         <div class="quoteCont">
           <label for="quote">Quote:</label>
           <input type="text" id="quote" name="quote" autocomplete="off" autofocus>
+        </div>
+
+        <div class="quoterCont">
+          <label for="quoter">Quoter:</label>
+          <input type="text" id="quoter" name="quoter" autocomplete="off" autofocus>
         </div>
 
       </div>
@@ -39,7 +39,6 @@
     <h2 class="quotesHeading">Your Cynical Quotes
       <span><div class="dash">-</div><div class="arrow">-></div></span>
     </h2>
-
 
     <ul class="quotesUlCont">
       <!-- Loop through the quotes. ---------------------------->
@@ -67,14 +66,14 @@
       <p>Please make the required adjustments.</p>
       <div class="quoteAndQuoterCont">
 
-        <div class="quoterCont">
-          <label for="quoterEdit">Quoter:</label>
-          <input type="text" id="quoterEdit" autocomplete="off" autofocus>
-        </div>
-
         <div class="quoteCont">
           <label for="quoteEdit">Quote:</label>
           <input type="text" id="quoteEdit"  autocomplete="off" autofocus>
+        </div>
+
+        <div class="quoterCont">
+          <label for="quoterEdit">Quoter:</label>
+          <input type="text" id="quoterEdit" autocomplete="off" autofocus>
         </div>
 
       </div>
@@ -90,6 +89,7 @@
       <button type="button" id="noDeleteId" class="delCancel">Cancel!</button>
       <button type="button" id="deleteId" class="delConfirm">Delete!</button>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>

@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.json());
-// A difference!
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -25,17 +24,24 @@ MongoClient.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnified
 
   // Create -------------------------------------------------------------------
   app.post("/add-quote", (req, res) => {
-    database.collection("quotes").insertOne({quoter: req.body.quoter, quote: req.body.quote}, () => {
+    database.collection("quotes").insertOne({quote: req.body.quote, quoter: req.body.quoter}, () => {
       res.redirect("/");
     })
   });
 
   // Update -------------------------------------------------------------------
-  app.post("/update-quotes", (req, res) => {
+  app.post("/update-quote", (req, res) => {
     database.collection("quotes").findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {quoter: req.body.quoter, quote: req.body.quote}}, () => {
       res.send("Success!");
     })
   });
+
+  // Update -------------------------------------------------------------------
+  app.post("/delete-quote", (req, res) => {
+    database.collection("quotes").deleteOne({_id: new mongodb.ObjectId(req.body.id)}, () => {
+      res.send("Success!")
+    })
+  })
 
 const PORT = 3000;
 app.listen(PORT, () => {
