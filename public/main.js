@@ -1,7 +1,7 @@
 "use strict";
 // Global variables. --------------------------------------------------
-let editButtonsClicked = document.querySelectorAll(".edit");
-let deleteButtonsClicked = document.querySelectorAll(".delete");
+let editButtons = document.querySelectorAll(".edit");
+let deleteButtons = document.querySelectorAll(".delete");
 
 let modalCoverDiv = document.querySelector(".modelCover");
 let editModalDiv = document.getElementById("editModalId");
@@ -14,18 +14,25 @@ let innerEditButton = document.getElementById("editSubId");
 let cancelDeleteButton = document.getElementById("noDeleteId");
 let confirmDeleteButton = document.getElementById("deleteId");
 
+let edit_id;
+let quoterText;
+let quoterElement;
+let quoteText;
+let quoteElement;
+let delete_id;
 
 // The edit model. -----------------------------------------------------
-for (let i=0; i < editButtonsClicked.length; i++){
-  editButtonsClicked[i].addEventListener("click", displayEditModal)
+for (let i=0; i < editButtons.length; i++){
+  editButtons[i].addEventListener("click", displayEditModal)
 };
 
 function displayEditModal(e){
 
-  let quoterText = e.target.parentElement.previousElementSibling.querySelector(".italics").textContent;
-  let quoteText = e.target.parentElement.previousElementSibling.querySelector(".bold").textContent;
-  // console.log(quoterText);
-  // console.log(quoteText);
+  edit_id = e.target.parentElement.querySelector(".hide").textContent;
+  quoterText = e.target.parentElement.previousElementSibling.querySelector(".bold").textContent;
+  quoterElement = e.target.parentElement.previousElementSibling.querySelector(".bold");
+  quoteText = e.target.parentElement.previousElementSibling.querySelector(".italics").textContent;
+  quoteElement = e.target.parentElement.previousElementSibling.querySelector(".italics");
 
   if (editModalDiv.classList.contains("hide") == true){
     modalCoverDiv.classList.remove("hide");
@@ -39,15 +46,29 @@ function displayEditModal(e){
 // Submit the edited text. ----------------------------------------------
 innerEditButton.addEventListener("click", submitEdit);
 
-function submitEdit(){
+function submitEdit(e){
+
+  console.log(edit_id);
+  console.log(quoteText);
+  console.log(quoterText);
+
+  let updatedQuoter = editModalQuoter.value;
+  let updatedQuote = editModalQuote.value;
+
+  axios.post("/update-quotes", {id: edit_id, quoter: updatedQuoter, quote: updatedQuote} ).then(() => {
+    quoterElement.textContent = updatedQuoter;
+    quoteElement.textContent = updatedQuote;
+  }).catch(() => {
+    console.log("Please try again later!");
+  });
+
   modalCoverDiv.classList.add("hide");
   editModalDiv.classList.add("hide");
-  // fetch code to be added later!
 }
 
 // The delete model. -----------------------------------------------------
-for (let i=0; i < deleteButtonsClicked.length; i++){
-  deleteButtonsClicked[i].addEventListener("click", displayDeleteModal)
+for (let i=0; i < deleteButtons.length; i++){
+  deleteButtons[i].addEventListener("click", displayDeleteModal)
 };
 
 function displayDeleteModal(e){

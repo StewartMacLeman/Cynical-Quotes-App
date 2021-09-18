@@ -7,7 +7,6 @@
     <meta name="description" content="A basic CRUD app for storing cynical quotes.">
     <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./main.js" defer></script>
 
     <title>Cynical Quotes</title>
   </head>
@@ -51,6 +50,7 @@
           <span class="bold"><%= quotesArray[i].quoter %></span>
         </div>
         <div class="quoteButtons">
+          <div class="hide"><%= quotesArray[i]._id %></div>
           <button type="button" class="edit">Edit</button>
           <button type="button" class="delete">Delete</button>
         </div>
@@ -80,6 +80,7 @@
       </div>
 
       <button type="button" id="editSubId">Click to Update!</button>
+
     </div>
 
     <!-- The edit modal. ------------------------------------------------------>
@@ -90,6 +91,7 @@
       <button type="button" id="deleteId" class="delConfirm">Delete!</button>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>

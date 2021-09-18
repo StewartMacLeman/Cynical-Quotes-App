@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const { MongoClient } = require("mongodb");
+const mongodb = require("mongodb");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -15,22 +16,26 @@ MongoClient.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnified
   database = client.db('cynical_quotes');
 })
 
-// Read / get. ---------------------------
+// Read -----------------------------------------------------------------------
   app.get('/', (req, res) => {
     database.collection("quotes").find().toArray((err, dbQuotes) => {
       res.render("index.ejs", { quotesArray: dbQuotes })
     })
   })
 
-  // Create / post. ------------------------
+  // Create -------------------------------------------------------------------
   app.post("/add-quote", (req, res) => {
     database.collection("quotes").insertOne({quoter: req.body.quoter, quote: req.body.quote}, () => {
       res.redirect("/");
     })
   });
 
-
-
+  // Update -------------------------------------------------------------------
+  app.post("/update-quotes", (req, res) => {
+    database.collection("quotes").findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {quoter: req.body.quoter, quote: req.body.quote}}, () => {
+      res.send("Success!");
+    })
+  });
 
 const PORT = 3000;
 app.listen(PORT, () => {
