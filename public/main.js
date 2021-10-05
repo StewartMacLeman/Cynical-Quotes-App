@@ -3,7 +3,7 @@
 let editButtons = document.querySelectorAll(".edit");
 let deleteButtons = document.querySelectorAll(".delete");
 
-let modalCoverDiv = document.querySelector(".modelCover");
+let modalCoverDiv = document.querySelector(".modalCover");
 let editModalDiv = document.getElementById("editModalId");
 let deleteModalDiv = document.getElementById("deleteModalId");
 
