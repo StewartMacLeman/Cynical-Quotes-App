@@ -2,9 +2,9 @@
   "name": "11_cynical_quotes",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "server.js",
   "scripts": {
-    "watch": "nodemon server.js",
+    "start": "nodemon server.js",
     "seeds": "mongo < ./db/seeds.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

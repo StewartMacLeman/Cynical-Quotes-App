@@ -1,8 +1,8 @@
 # Cynical Quotes App.
 
-This is a simple CRUD app to contain a users favourite cynical quotes.
+This is a simple CRUD app to contain a user's favourite cynical quotes.
 
-## Build with:
+## Built with:
 * Express
 * MongoDB
 * EJS
@@ -13,8 +13,8 @@ This is a simple CRUD app to contain a users favourite cynical quotes.
 
 Add some example quotes with the below terminal command.
 
-```
-npm run seeds
+``` 
+npm run seeds 
 ```
 ---
 ## App Image: Starter Image.

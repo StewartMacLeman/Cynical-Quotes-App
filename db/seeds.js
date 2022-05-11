@@ -3,7 +3,7 @@ db.dropDatabase();
 
 db.quotes.insertMany([
   {
-    quote: "All you need in life is ignorance and confidence and then succcess is sure.",
+    quote: "All you need in life is ignorance and confidence and then success is sure.",
     quoter: "Mark Twain"
   },
   {
